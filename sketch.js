@@ -5,6 +5,8 @@ var slider1;
 var slider2;
 
 function setup() {
+  createP("Left paddle use UP and DOWN keyboard keys.");
+  createP("Right paddle use the mouse.")
   canvas = createCanvas(600,600);
   canvas.position((windowWidth / 2) - (canvas.width / 2),(windowHeight / 2) - (canvas.height / 2));
 
@@ -35,21 +37,30 @@ function draw() {
   text('Player 2 use the up & down keyboard keys',10, height -5);
   // text('Player 2 use the up & down keyboard keys:',slider2.x - 190, slider2.y + 5);
 
-  player1.y = mouseY;
+  player2.y = mouseY - 50;
 
-  if (mouseY >= height - 100) {
-      player1.y = height - 100;
+  if (mouseY >= height - 50) {
+      player2.y = height - 100;
   }
 
-  if (mouseY <= 0) {
-    player1.y = 0;
+  if (mouseY <= 50) {
+    player2.y = 0;
   }
 
   if (keyIsDown(UP_ARROW) && player2.y > 0) {
-    player2.y -= 15;
+    if (player1.y <= 0) {
+      player1.y = 0;
+    } else {
+      player1.y -= 15;
+    }
   }
+
   if (keyIsDown(DOWN_ARROW) && player2.y < height - 100) {
-    player2.y += 15;
+    if (player1.y >= height - 100) {
+      player1.y = height - 100;
+    } else {
+      player1.y += 15;
+    }
   }
 
   ball.move();
