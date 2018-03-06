@@ -47,7 +47,7 @@ function draw() {
     player2.y = 0;
   }
 
-  if (keyIsDown(UP_ARROW) && player2.y > 0) {
+  if (keyIsDown(UP_ARROW) && player1.y > 0) {
     if (player1.y <= 0) {
       player1.y = 0;
     } else {
@@ -55,7 +55,7 @@ function draw() {
     }
   }
 
-  if (keyIsDown(DOWN_ARROW) && player2.y < height - 100) {
+  if (keyIsDown(DOWN_ARROW) && player1.y < height - 100) {
     if (player1.y >= height - 100) {
       player1.y = height - 100;
     } else {
@@ -63,8 +63,10 @@ function draw() {
     }
   }
 
+  player1.show();
+  player2.show();
+
   ball.move();
-  ball.show();
 
   if (ball.x - ball.r <= player1.x + 15 && player1.y <= ball.y && player1.y + 100 >= ball.y && ball.x > 0) {
     ball.direction_x = 1;
@@ -83,11 +85,9 @@ function draw() {
   if (ball.y + ball.r <= 0) {
     ball.direction_y = random() * 1;
   }
-  // player1.y = slider1.value();
-  // player2.y = slider2.value();
 
-  player1.show();
-  player2.show();
+  ball.show();
+
 }
 
 
